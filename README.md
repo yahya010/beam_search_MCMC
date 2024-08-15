@@ -24,6 +24,8 @@ Follow these steps to test the current code:
 4. Install the package in editable mode:
    ```bash
    pip install -e .
+   cd src/transformers/generation
+   Edit the beam_search.py file as in the file in the parent directory
    ```
 
 5. Return to the parent directory:

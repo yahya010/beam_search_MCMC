@@ -1,4 +1,4 @@
-# Testing Instructions for Transformers Submodule
+# Connecting Beam Search to MCMC
 
 Follow these steps to test the current code:
 

@@ -305,6 +305,7 @@ class BeamSearchScorer(BeamScorer):
                     W[k, n] = W[k, n-1] + weights[n-1] * W[k-1, n-1]
             inclusion_probs = self.calculate_inclusion_probabilities(W, weights)
             # conditional Poisson sampling
+            #TODO: why are some inclusion probs nan?
             sampled_indices = []
             for n in range(N, 0, -1):
                 k = K - len(sampled_indices)
@@ -630,7 +631,7 @@ class ConstrainedBeamSearchScorer(BeamScorer):
                 )
 
         device = input_ids.device
-
+        
         next_beam_scores = torch.zeros((batch_size, self.group_size), dtype=next_scores.dtype, device=device)
         next_beam_tokens = torch.zeros((batch_size, self.group_size), dtype=next_tokens.dtype, device=device)
         next_beam_indices = torch.zeros((batch_size, self.group_size), dtype=next_indices.dtype, device=device)
